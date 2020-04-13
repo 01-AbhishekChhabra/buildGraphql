@@ -1,6 +1,8 @@
-import { buildSchema } from 'graphql';
 
-const schema = buildSchema(`
+import { resolvers } from './resolvers';
+import { makeExceutableSchema } from 'graphql-tools';
+
+const typeDefs = `
     
     type Friend {
         id: ID
@@ -51,6 +53,9 @@ const schema = buildSchema(`
     }
 
 
-`)
+`;
 
-export default schema;
+
+const schema = makeExceutableSchema({ typeDefs, resolvers});
+
+export { schema };
